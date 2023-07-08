@@ -1,0 +1,65 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>    
+    
+    	 <div class="footer-top">
+		 	<ul class="twitter_footer">
+		 	 <li>
+		 	   <i class="twt_icon"> </i><p>if you work out, you do physical exercises in order to make your body fit and strong. <span class="m_6">1 days ago</span></p>
+		 	   <div class="clear"></div>
+		 	 </li>
+		 	</ul>
+		 </div>
+		 
+<div class="footer-bottom">
+		   <div class="container">
+		 	 <div class="row section group">
+		 	 
+				<div class="col-md-4" >
+					<div class="f-logo" >
+						<img src="<%=request.getContextPath()%>/front-end/gym_index/images/logo.png" style="margin-left: -190px;"/>
+					</div>
+			          <div class="subscribe1">
+			            <a href="#">Submit Email<i class="but_arrow"> </i></a>
+			          </div>
+				</div>
+				
+				<div class="col-md-4">
+					<p class="address">Phone : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="m_10">(09) 75 315 667</span></p>
+					<p class="address">Email : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="m_10">tony3336662000@gmail.com</span></p>
+				</div>
+				
+				<div class="col-md-4">
+					<ul class="list">
+						<h4 class="m_7">支援服務</h4>
+						<li><a href="<%=request.getContextPath()%>/front-end/shop/shop.jsp">商城</a></li>
+						<li><a href="<%=request.getContextPath()%>/front-end/lesson/lesson_page.jsp">健身教學</a></li>
+						<li><a href="<%=request.getContextPath()%>/front-end/gym_index/pricing.jsp">直播</a></li>
+		<c:if test="${sessionScope.allowUser == null}">
+			   <!-- Button trigger modal -->
+				<li>
+				<button type="button" style="margin-top:4px;" class="btn btn-outline-success" data-toggle="modal" data-target="#exampleModalLong">
+				  登入
+				</button>
+				</li>
+		</c:if>
+					</ul>
+					
+					<ul class="list1">
+						<h4 class="m_7">相關資訊</h4>
+						<li><a href="<%=request.getContextPath()%>/front-end/article/NewlistAllArticle.jsp">討論區</a></li>
+						<li><a href="<%=request.getContextPath()%>/front-end/gym/gym.jsp">健身房地點</a></li>
+						<li><a href="<%=request.getContextPath()%>/front-end/news/news.jsp">關於我們</a></li>
+					</ul>
+				</div>
+				
+				
+				<div class="clear"></div>
+	  		  </div>
+		 	</div>
+		 </div>
+		 <div class="copyright">
+		  <div class="container">
+		    <div class="copy">
+		        <p>© 2020 create by <a href="https://www.tibame.com/goodjob/java" target="_blank"> iii - Tibame</a></p>
+		    </div>
+		  

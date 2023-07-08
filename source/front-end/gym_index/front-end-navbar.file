@@ -1,0 +1,135 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>    
+
+<!-- start header_bottom -->
+	  <div class="header-bottom">
+		 <div class="container">
+		
+		   <div class="clear"></div>
+		</div>
+	  </div>
+	<!-- end header_bottom -->
+ 
+ <!-- start menu -->
+
+    <div class="menu" id="menu">
+	  <div class="container">
+		 <div class="logo">
+			<a href="<%=request.getContextPath()%>/front-end/gym_index/index.jsp"><img src="<%=request.getContextPath()%>/front-end/gym_index/images/logo.png" /></a>
+		 </div>
+		 <div class="h_menu4"><!-- start h_menu4 -->
+		   <a class="toggleMenu" href="#">Menu</a>
+			 <ul class="nav">
+			 
+		      <li><a href="<%=request.getContextPath()%>/front-end/gym_index/index.jsp">主頁</a></li>
+		      <li><a href="<%=request.getContextPath()%>/front-end/shop/shop.jsp">商城</a></li>
+		      <li><a href="<%=request.getContextPath()%>/front-end/lesson/lesson_page.jsp">健身教學</a></li>
+		      <li><a href="<%=request.getContextPath()%>/front-end/gym/gym.jsp">健身房地點</a> </li>
+		      <li><a href="<%=request.getContextPath()%>/front-end/live/classes.jsp">直播</a></li>
+		      <li><a href="<%=request.getContextPath()%>/front-end/article/NewlistAllArticle.jsp">討論區</a></li>
+		      <li><a href="<%=request.getContextPath()%>/front-end/news/news.jsp">最新消息</a></li>
+		
+		<c:if test="${sessionScope.allowUser == null}">
+			   <!-- Button trigger modal -->
+				<li>
+				<button type="button" style="margin-top:4px;" class="btn btn-outline-success" data-toggle="modal" data-target="#exampleModalLong">
+				  登入
+				</button>
+				</li>
+		</c:if>
+<c:if test="${sessionScope.memberAccount != null}">			   
+ 	<FORM METHOD="post" ACTION="<%=request.getContextPath()%>/member.do">
+ 	 <li><a href="<%=request.getContextPath()%>/front-end/member/member_center.jsp"><span style="color: gray;">${memberVO.member_name } </span>
+		<input type="hidden" name="action"value="clearMemberAccount">
+		 <button type="submit" class="btn btn-outline-success">登出</button></a></li>
+	</FORM>		   
+</c:if>
+
+<c:if test="${sessionScope.coachAccount != null}">	
+<li>
+	<FORM METHOD="post" ACTION="<%=request.getContextPath()%>/coach.do">
+	   <a href="<%=request.getContextPath()%>/front-end/coach/coach_center.jsp"><span style="color: gray;">${coachVO.coach_name } </span>
+		<input type="hidden" name="action"value="clearCoachAccount">
+		<button type="submit" class="btn btn-outline-success">登出</button></a>
+	</FORM>
+	</li>
+</c:if>	
+ 
+     <script type="text/javascript" src="<%=request.getContextPath()%>/front-end/gym_index/js/nav.js"></script>
+    </div><!-- end h_menu4 -->
+   <div class="clear"></div>
+   
+   </div>
+ </div>
+ 
+ <!-- end menu -->
+ 
+	<!-- Modal -->
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">選擇登入類型</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+        
+        
+        
+			
+				<h1 class="display-4" style="text-align: center;">
+					<font color="green">加入我們</font>
+				</h1>
+				<p class="lead">
+				<h3 style="text-align: center; color:#0f2411;">
+					<b>一個讓理想實踐的地方</b><br><br>
+				</h3>
+				<h4 style="text-align: center; color:#0e0f1a;">為什麼要加入 WorkOutAnywhere？</h4>
+				<h6>
+					<font color="gray">不受限於時間與場地限制<br>WorkOutAnywhere 為忙碌的現代人提供了更多的健身新選擇<br>會員能夠與我們的合作教練進行更加深入的交流<br>
+					即使不出門也能獲得到專業教練的健身指導 <br> 並且能和其他會員一起交流、觀看健身直播、購買健身相關產品</font>
+				</h6>
+				<hr class="my-4">
+				<p><br>
+					<h3>
+					請選擇登入類型
+					</h3>
+					<%
+						String allowUserMember = (String) session.getAttribute("allowUser");
+						String memberAccount = (String) session.getAttribute("memberAccount");
+						if (allowUserMember == null || memberAccount == null) {
+					%>
+					<br><br>
+					<input type="button"  class="btn btn-info btn-lg btn-block" value="會員登入" onclick="location.href='<%=request.getContextPath()%>/front-end/index/member_login.jsp'">
+					<%
+						}
+					%>
+					<%
+						String allowUserCoach = (String) session.getAttribute("allowUser");
+						String coachAccount = (String) session.getAttribute("coachAccount");
+						if (allowUserCoach == null || coachAccount == null) {
+					%>
+					<br> 
+					<input type="button" class="btn btn-primary btn-lg btn-block" value="教練登入" onclick="location.href='<%=request.getContextPath()%>/front-end/index/coach_login.jsp'">
+					<%
+						}
+					%>
+					<br> <br><br><font size="4">
+							<a href="<%=request.getContextPath() %>/front-end/index/member_sign_in.jsp"
+								style="text-decoration: none;">註冊會員</a>&nbsp&nbsp&nbsp <a
+								href="<%=request.getContextPath() %>/front-end/index/coach_sign_in.jsp"
+								style="text-decoration: none;">註冊教練</a>&nbsp&nbsp&nbsp <a
+								href="<%=request.getContextPath() %>/front-end/gym_index/index.jsp" style="text-decoration: none; color: gray;">返回</a>
+					</font>
+
+
+
+      </div>
+    
+    </div>
+  </div>
+</div>
+	

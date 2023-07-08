@@ -1,0 +1,34 @@
+<!-- jsp header -->
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+
+
+<!-- header source -->
+<%@ include file="/back-end/gym_index/back-end-head-source.file"%>
+
+
+<!--   css -->
+<%@ include file="/back-end/gym_index/back-end-head-css.file"%>
+
+
+
+<!-- back-end  navBar  -->
+<%@ include file="/back-end/gym_index/back-end-navbar.file"%>
+
+
+
+<!--  back-end sideBar  -->
+<%@ include file="/back-end/gym_index/back-end-sidebar.file"%>
+
+
+
+
+
+
+
+
+
+<!-- 新版bootstramp 看情況或許可以放 -->
+<%@ include file="/front-end/gym_index/front-end-bs-new-version.file" %>
+

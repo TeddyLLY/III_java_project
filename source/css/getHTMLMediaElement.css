@@ -1,0 +1,128 @@
+.media-container, .media-container * {
+    margin: 0;
+    padding: 0;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+.media-container, .media-container * {
+    -moz-transition: all .5s ease-in-out;
+    -ms-transition: all .5s ease-in-out;
+    -o-transition: all .5s ease-in-out;
+    -webkit-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
+}
+
+/* <===================================================================================> */
+.media-container {
+    display: inline-block;
+    border: 5px solid rgb(0, 0, 0);
+    border-radius: 4px;
+    overflow: hidden;
+    vertical-align: top;
+    background: rgb(107, 107, 107);
+}
+
+/* <===================================================================================> */
+.media-box {
+    border: 2px solid rgb(107, 107, 107);
+    margin: 0px;
+}
+
+.media-controls, .volume-control {
+    margin-top: 2px;
+    position: absolute;
+    margin-left: 5px;
+    z-index: 100;
+    opacity: 0;
+}
+
+/* <===================================================================================> */
+.media-controls .control, .volume-control .control {
+    background-position: center top;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-top: 10%;
+    float: left;
+    /*  background-color: rgba(255, 255, 255, 0.84); */
+}
+
+.media-controls .control:first-child {
+    border-bottom-left-radius: 5px;
+}
+
+.volume-control .control:first-child {
+    border-top-left-radius: 5px;
+}
+
+.media-controls .control:hover, .media-controls .selected, .volume-control .control:hover {
+     /* background-color: rgba(255, 255, 255, 0.74); */
+}
+
+.media-controls .control:active, .media-container .selected, .volume-control .control:active {
+    /*  background-color: rgba(255, 255, 255, 0.44)!important; */
+}
+
+/* <===================================================================================> */
+.record-video {
+	width: 6vw;
+    height: 6vh;
+    background-image: url('https://localhost:8443/RTCPeerConnection_Ver2/images/progress1.gif');
+    background-position: center;
+    border: 0px solid rgb(107, 107, 107);
+    margin-left: 10%;
+}
+
+.stop-recording-video {
+background-image: url('https://localhost:8443/RTCPeerConnection_Ver2/images/stop-video1.gif');
+    width: 10vw;
+    height: 10vh;
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-size: 25%;
+    border: 0px solid red;
+    margin-left: 5%;
+    margin-top: 5%;
+    float: left;
+}
+
+.stop-recording-video::after {
+	display:inline-block;
+    font-size: 1.42vw;
+    font-weight: bold;
+    color: red;
+    content: "錄影轉檔中";
+    margin-left: 25%;
+    float: left;
+}
+
+.stop-recording-video2 {
+background-image: url('https://localhost:8443/RTCPeerConnection_Ver2/images/stop-video2.gif');
+    width: 10vw;
+    height: 10vh;
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-size: 22%;
+    border: 0px solid red;
+    margin-left: 5%;
+    margin-top: 5%;
+    float: left;
+}
+
+.stop-recording-video2::after {
+	display:inline-block;
+    font-size: 1.42vw;
+    font-weight: bold;
+    color: cyan;
+    content: "請儲存錄影";
+    margin-left: 25%;
+    float: left;
+}
+
+.media-box video {
+    width: 100%;
+    vertical-align: top;
+    object-fit: fill;
+}

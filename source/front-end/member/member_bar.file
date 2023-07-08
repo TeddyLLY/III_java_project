@@ -1,0 +1,107 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="com.member.model.*"%>
+<%
+	MemberVO memberVO = (MemberVO) session.getAttribute("memberVO");
+%>
+		<style type="text/css">
+			@import url("<%=request.getContextPath()%>/front-end/member/menu/menu.css");
+		</style>
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/front-end/member/menu/menu.js">
+
+<div class="col-md-4">
+    <!-- Overlay for fixed sidebar -->
+    <div class="sidebar-overlay"></div>
+
+    <!-- Material sidebar -->
+        <br>      
+    <aside id="sidebar" class="sidebar sidebar-default open" role="navigation">
+        <!-- Sidebar header -->
+        <div class="sidebar-header header-cover" style="background-image: url(https://2.bp.blogspot.com/-2RewSLZUzRg/U-9o6SD4M6I/AAAAAAAADIE/voax99AbRx0/s1600/14%2B-%2B1%2B%281%29.jpg);">
+            <!-- Top bar -->
+            <div class="top-bar"></div>
+            <!-- Sidebar toggle button -->
+            <button type="button" class="sidebar-toggle">
+            <i class="icon-material-sidebar-arrow"></i>
+        </button>
+            <!-- Sidebar brand image -->
+            <div class="sidebar-image">
+              	<img src="<%= request.getContextPath()%>/MemberReader?member_no=${memberVO.member_no}" class="card-img-top" >
+            </div>
+            <!-- Sidebar brand name -->
+            <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+            ${memberVO.member_account}
+            <b class="caret"></b>
+        </a>
+        </div>
+
+        <!-- Sidebar navigation -->
+        <ul class="sidebar-nav">
+            <li>
+                <a href="#">
+                    <i class="sidebar-icon md-inbox"></i> 課程管理
+                </a>
+            </li>
+ <br>
+<!--   =====================  -->           
+            <li>
+                <a href="#">
+                    <i class="sidebar-icon md-star"></i> 預約管理
+                </a>
+            </li>
+ <br>           
+<!--   =====================  -->
+            <li>
+                <a href="<%=request.getContextPath()%>/front-end/member/member_shoppinglist.jsp">
+                    <i class="sidebar-icon md-drafts"></i> 購買紀錄
+                </a>
+            </li>
+ <br>            
+<!--   =====================  -->
+            <li>
+                <a href="<%=request.getContextPath()%>/front-end/member/member_train.jsp">
+                    <i class="sidebar-icon md-send"></i> 	  訓練
+                </a>
+            </li>
+ <br>            
+            <li class="divider"></li>
+            
+<!--  ////////////////////////////////////////////////////////// -->            
+            <li class="dropdown">
+                <a class="ripple-effect " href="<%=request.getContextPath()%>/front-end/member/member_data.jsp" >
+            	    資料維護
+                <b class="caret"></b>
+            </a>
+            </li>
+  <br>           
+<!--   =====================  -->            
+            <li>
+                <a href="<%=request.getContextPath()%>/front-end/member/member_chose_friend.jsp">
+                聊天
+                <!-- <span class="sidebar-badge"></span> -->
+            </a>
+            </li>
+ <br>
+<!--   =====================  -->
+            <li>
+                <a href="<%=request.getContextPath()%>/front-end/member/member_system_news.jsp" >
+           	     訊息
+               <!-- <span class="sidebar-badge"></span> -->
+            </a>
+            </li>
+ <br>
+<!--   =====================  -->
+            <li>
+                <a href="<%=request.getContextPath()%>/front-end/member/member_cost.jsp">
+                  儲值
+                 <!-- <span class="sidebar-badge badge-circle">i</span> -->
+            </a>
+            </li>
+   <br>          
+<!--   =====================  -->
+        </ul>
+    </aside>
+
+<!--  col-md-4 end  -->
+</div>
+

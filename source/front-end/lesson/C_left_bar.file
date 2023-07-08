@@ -1,0 +1,74 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+				<div class="col-md-3">
+					<div class="category-sidebar">
+						<div class="widget category-list">
+							<h4 class="widget-header">課程相關</h4>
+							<ul class="category-list">
+								<li><a href="<%=request.getContextPath()%>/front-end/lesson/Coach_lesson_page.jsp">當前課程 <span></span></a></li>
+								<li><a href="<%=request.getContextPath()%>/front-end/lesson/Coach_lesson_history.jsp" >歷史課程 <span></span></a></li>
+							</ul>
+						</div>
+					<div class="widget category-list">
+							<h4 class="widget-header">預約相關</h4>
+							<ul class="category-list">
+								<li><a href="<%=request.getContextPath()%>/front-end/appointment_order/CoachUnCheckedAppointment.jsp">待處理訂單<span></span></a></li>
+								<li><a href="<%=request.getContextPath()%>/front-end/appointment_order/CoachProgressingAppointment.jsp">當前預約 <span></span></a></li>
+								<li><a href="<%=request.getContextPath()%>/front-end/appointment_order/CoachAppointmentHistory.jsp">預約紀錄 <span></span></a></li>
+							</ul>
+						</div>
+						<div class="widget category-list" id="datemy">
+							<h4 class="widget-header">我的行程</h4>
+							<input type='hidden' id="datepicker" name="coachDate" class="datepicker-here"/>
+							<ul class="category-list " style="font-size:5px;padding-top: 5px;padding-left: 5%;">
+							<li style="color:#82ef5c;" class="fa fa-bookmark"></li>課程
+							<li style="color:#ffc653;" class="fa fa fa-bookmark"></li>預約
+							<li style="color:#c9c9c9;" class="fa fa fa-bookmark"></li>私人排程
+							</ul>
+						</div>							
+					</div>
+				</div>
+				<script>
+function disconnect () {
+	ws.close();
+}
+            var MyPoint = "/LessonWS/";
+            var host = window.location.host;
+            var path = window.location.pathname;
+            var webCtx = path.substring(0, path.indexOf('/', 1));        
+            
+            var ws;
+           var connectWS= function connect(){
+            	var myNo ='${coachVO.coach_no}';
+                var endPointURL = "wss://" + window.location.host + webCtx + MyPoint+myNo;
+                ws = new WebSocket(endPointURL);
+                ws.onopen = function() {
+                	console.log('Connection opened!'+endPointURL);
+                };
+                ws.onmessage = function(event) {
+                    var message = JSON.parse(event.data).message;
+                    var action = JSON.parse(event.data).action;
+                    var memName = JSON.parse(event.data).memName;
+                    if(action==="sendAP"){
+               		 Swal.fire({
+            			 title: '收到一筆來自 '+memName+' 的預約訂單',
+            			 icon:'info',					
+            					})
+                    }else if(action==="chatwithCoach"){
+                  		 Swal.fire({
+                			 title: '會員'+memName+'來找你聊天囉~',
+                					})
+                        }
+                };
+                ws.onclose = function() {
+                	console.log('WebSocket closed'+endPointURL);
+                };
+                ws.onerror = function(err) {
+                	console.log(err);
+                };
+            };
+ 				
+ 	function coachScheduleUpdate(){
+	    var jsonObj = {"message" : "","yourNo":"","action":"coachScheduleUpdate"};
+	    ws.send(JSON.stringify(jsonObj));            
+ 		}					
+				</script>					

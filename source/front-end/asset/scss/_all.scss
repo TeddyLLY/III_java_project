@@ -1,0 +1,178 @@
+$darkGreen : #3F5D45;
+$Green : #8DA291;
+$lightGreen : #EAF0ED;
+$lightYellow : #FFE180;
+$white: #ffffff;
+
+$width: 1024px;
+$space: 0.5rem; /* padding 跟 margin 基準值 */
+
+$pic: '../asset/img/product1.jpeg',
+      '../asset/img/product2.jpeg',
+      '../asset/img/product3.jpeg',
+      '../asset/img/photo-1464305795204-6f5bbfc7fb81.jpeg',
+      '../asset/img/photo-1490474504059-bf2db5ab2348.jpeg',
+      '../asset/img/product4.jpeg',
+      ;
+
+$subMenuImg:'../asset/img/photo-1490914327627-9fe8d52f4d90.jpg',
+            '../asset/img/photo-1504114133367-631ecd3db3ca.jpg',
+            '../asset/img/photo-1499638472904-ea5c6178a300.jpg',
+;
+
+
+$indexContentImg: '../asset/img/photo-1519730722595-a5ff788dea4d.jpeg',
+                  '../asset/img/photo-1501432781167-c0ccfd492297.jpeg',
+;
+
+@mixin bg-color-style ( $bgcolor, $color ){
+  background: $bgcolor; 
+  color: $color; 
+}
+@mixin font-style ( $size, $align ){
+  font-size : $size; 
+  text-align: $align; 
+}
+
+/* 未整理 */
+.pointer { cursor: pointer;}
+
+.h-08{ height: 8%; }
+.h-6{ height: 60%; }
+.h-10 { height: 100%; }
+
+.w-2  { width: 20%;}
+.w-25 { width: 25%;}
+.w-3  { width: 30%;}
+.w-4  { width: 40%; }
+.w-45 { width: 45%; }
+.w-5  { width: 50%; }
+.w-6  { width: 60%; }
+.w-7  { width: 70%; }
+.w-8  { width: 80%; }
+.w-9  { width: 90%; }
+.w-10 { width: 100%; }
+
+.toLeft  { margin-right: auto; }
+.toRight  { margin-left: auto; }
+.toBottom { margin-top: auto; }
+
+.pos-rel { position: relative; }
+.pos-abs { position: absolute; }
+.t0 { top: 0 }
+.r0 { right: 0}
+
+/* flex 定義區*/
+
+.flex { display: flex; }
+
+.flex-2 { flex: 2; }
+.flex-1 { flex: 1; }
+
+.flex-start  { align-self: flex-start; }
+.flex-end    { align-self: flex-end; }
+.flex-center { align-self: center;  }
+
+.flex-row         {flex-direction:row; }
+.flex-row-reverse { flex-direction:row-reverse; }
+.flex-column      { flex-direction:column; }
+
+.flex-justify-content-end    { justify-content:flex-end;}
+.flex-justify-content-center { justify-content:center; }
+.flex-space-between          { justify-content:space-between; }
+.flex-space-around           { justify-content:space-around;}
+
+.flex-baseline { align-items:baseline; }
+.flex-align-items-center   { align-items:center; }
+
+/* margin padding 定義區*/
+
+@for $i from 1 through 6 {
+  .mt-#{$i} { margin: $space*$i 0 0 0 ;}
+  .mb-#{$i} { margin: 0 0 $space*$i 0 ;}
+  .ml-#{$i} { margin: 0 0 0 $space*$i ;}
+  .mr-#{$i} { margin: 0 $space*$i 0 0 ;}
+  .mx-#{$i} { margin: 0 $space*$i; }
+  .my-#{$i} { margin: $space*$i 0; }
+  .m-#{$i} { margin: $space*$i; }
+
+  .px-#{$i} { padding: 0 $space*$i; }
+  .py-#{$i} { padding: $space*$i 0; }
+  .p-#{$i} { padding: $space*$i; } 
+}
+
+/* sweet 甜點圖片的定義區*/
+@for $i from 1 through 6 {
+  .pic#{$i} {
+    background: url(nth($pic, $i));
+    background-size:cover;
+    background-position:center center;
+  }
+}
+
+/* index Content 圖片定義區*/
+@for $i from 1 through 2 {
+  .indexContentImg#{$i} {
+    background: url(nth($indexContentImg, $i));
+    background-size:cover;
+    background-position:center center;
+  }
+}
+
+/* subMenu 背景圖片的定義區*/
+@for $i from 1 through 3 {
+  .subMenuImg#{$i} {
+    background: url(nth($subMenuImg, $i));
+    filter: blur(4px); 
+    background-size:cover;
+    background-position:center center;
+  }
+}
+
+/* 字體大小 */
+.f-36 { font-size: 36px !important; }
+.f-24 { font-size: 24px !important; }
+.f-20 { font-size: 20px !important; }
+.f-16 { font-size: 16px !important; } 
+
+/* 各種背景色與顏色的組合配色 */
+.bg-lightGreen { @include bg-color-style ( $lightGreen, none ); }
+.bg-lightYellow { @include bg-color-style ( $lightYellow, none ); }
+.bg-darkGreen  { @include bg-color-style ( $darkGreen, none  ); }
+
+.color-darkGreen { @include bg-color-style( none, $darkGreen ); }
+.color-green     { @include bg-color-style( none, $Green     ); }
+.color-lightGreen{ @include bg-color-style( none, $lightGreen); }
+
+.bg-dG-color-lG {
+  @include bg-color-style ( $darkGreen, $lightGreen );
+  @include font-style     ( 24px, center  );
+}
+
+.bg-w-color-g {
+  @include bg-color-style ( $white, $Green );
+  @include font-style     ( 24px, center  );
+}
+.bg-w-color-dG {
+  @include bg-color-style ( $white, $darkGreen );
+  @include font-style     ( 24px, center  );
+}
+
+.bg-lY-color-dG {
+  @include bg-color-style ( $lightYellow, $darkGreen );
+  @include font-style     ( 24px, center  );
+}
+
+.bg-lG-color-dG {
+  @include bg-color-style ( $lightGreen, $darkGreen );
+  @include font-style     ( 24px, center  );
+  font-weight: bold;
+}
+.bg-lG-color-G {
+  @include bg-color-style ( $lightGreen, $Green );
+  @include font-style     ( 24px, center  );
+}
+
+.border-lG { border: 1px solid $lightGreen; }
+.font-weight-light { font-weight: lighter; }
+

@@ -1,0 +1,279 @@
+@import url(https://fonts.googleapis.com/earlyaccess/cwtexyen.css);
+@import "all";
+
+*{
+  box-sizing: border-box;
+}
+html{
+  overflow-x: hidden;
+}
+
+.wrap{
+  max-width: 1024px;
+  margin: 0 auto;
+  .header {
+    min-height: 100px;
+    ul{
+      text-align: right;
+      li {
+        display: inline-block;
+        a {
+          font-weight: bold;
+          @extend .color-darkGreen, .p-3
+        }
+      }
+    }
+    .logo{
+      text-align: left;
+      a {
+        background-image: url(../asset/img/logo-all-dark.svg);
+        width: 192px;
+        height: 35px;
+        display: inline-block;
+        overflow: hidden;
+        text-indent: 101%;
+      }
+    }
+  }
+  .banner {
+    max-height: 496px;
+    overflow-y: hidden;
+  }
+  .subMenu {
+    top: - 80px;
+    ul {
+      height: 256px;
+      li {
+        overflow: hidden;
+      }
+      .subMenuColorMaskStyle {
+        writing-mode: vertical-lr;
+        pointer-events: none;
+        p {
+          font-size: 24px;
+          letter-spacing: 5px;
+          margin: 0 auto;
+        }
+      }
+      .special {
+        @extend .subMenuImg1;
+      }
+      .hot {
+        @extend .subMenuImg2;
+      }
+      .new {
+        @extend .subMenuImg3;
+      }
+      div.hotColor {
+        @include bg-color-style ( rgba($color: $darkGreen , $alpha: 0.8), $white);
+        @extend .subMenuColorMaskStyle;
+      }
+      div.specialColor {
+        @include bg-color-style ( rgba($color: $lightYellow , $alpha: 0.7), $darkGreen);
+        @extend .subMenuColorMaskStyle;
+      }
+      .special:hover, .hot:hover, .new:hover {
+        transition: 0.3s;
+        filter: blur(8px); 
+      }
+    }
+  }
+  .subBanner { 
+    padding: 60px;
+  }
+  .subTitle {
+    font-family: ‘cwTeXMing’, serif;
+    font-weight: bold;
+    writing-mode: vertical-rl;
+    letter-spacing: 5px;
+    line-height: 1.5;
+    text-shadow: 0px 0px $darkGreen;
+    font-size: 36px;
+  }
+  .content {
+    .lightGreenBg {
+      min-height: 420px;
+      .contentItem {
+        top:-20px;
+        max-height: 460px;
+      }
+      .Title, .Img2 {
+        order: 3;
+      }
+      .Title2 , .Intro {
+        order:2;
+      }
+      .Img, .Intro2 {
+        order:1;
+      }
+      .contentTitle {
+        width: 10%;
+        margin-right: $space*3;
+        h2 {
+          font-family: ‘cwTeXMing’, serif;
+          font-weight: bold;
+          writing-mode: vertical-rl;
+          letter-spacing: 5px;
+          line-height: 1.5;
+          color: $darkGreen;
+          text-shadow: 0px 0px $darkGreen;
+        }
+      }
+      .contentIntro {
+        margin: 0;
+        writing-mode: vertical-rl;
+        padding: 60px 30px;
+        letter-spacing: 2px;
+        line-height: 2;
+        color: $Green;
+        font-size: 16px;
+      }
+    }   
+  }
+  .productList{
+    min-height: 436px;
+    text-align: center;
+    ul {
+      li {
+        div.sweetImg {
+          min-height: 315px;
+        }
+        display: inline-block;
+        .specialTag{
+          position: absolute;
+          left: 20px;
+          padding: 10px;
+          letter-spacing: 3px;
+          writing-mode: vertical-lr;
+          @include bg-color-style ( $darkGreen, $lightGreen );
+          @include font-style     ( 16px, center  );
+        }
+        .name {
+          border: 2px solid $lightGreen;
+          width: 55%;
+          color: $darkGreen;
+          font-size: 20px;
+          padding: 10px;
+        }
+        .price {
+          width: 45%;
+          border: 2px solid $lightGreen;
+          color: $darkGreen;
+          font-weight: bold;
+          font-size: 20px;
+          padding: 10px;
+        }
+      }
+    }
+  }
+  .footer {
+    margin-top: 40px; 
+    .subscription {
+      height: 25%;
+      padding: 30px 122px;
+      background: $darkGreen;
+      color: #FFF;
+      font-weight: lighter;
+      .subscriptionTitle p {
+        font-size: 24px;
+      }
+    }
+    .info {
+      padding: 30px 122px;
+      height: 75%;
+      background: $lightGreen;
+    } 
+  }
+  /* input 樣式*/
+  .search {
+    height: 56px;
+    position: relative;
+    background: $lightGreen;
+    input {
+      float: left;
+      border: 0;
+      outline: none;
+      width: 100%;
+      background: $lightGreen;
+      &::placeholder {
+        color: $darkGreen;
+        opacity: 0.7;
+    }
+  }
+  }
+  .loginMethod {
+    display: none;
+  }
+  .menuListitem:hover {
+    @extend .bg-lG-color-dG;
+    cursor: pointer;
+  }
+  /* cart.html */
+  .cartListImg {
+    min-height: 110px;
+    min-width: 110px;
+  }
+  .cartListTitle, .cartListTotal {
+    @include bg-color-style ( $white, $darkGreen );
+    @include font-style     ( 20px, left );
+  }
+  .forRWDLine {
+    display: none;
+  }
+  /* checkout.html*/
+  .checkoutPage {
+    height: fit-content;
+    .checkoutTitle {
+      h2 {
+        margin: 0;
+        font-size: 36px;
+      }
+    }
+  }
+  .circle {
+    width:20px;
+    height:20px; //正圓形，所以寬與高都設一樣
+    border-radius:999em;
+    .circle-inside {
+      left: 2px;
+      top: 2px;
+      width: 14px;
+      height: 14px; //正圓形，所以寬與高都設一樣
+      border-radius:999em;
+      @extend .bg-lightGreen
+    }
+  }
+  .circle-line {
+    top: 8px;
+    left: 18px;
+    width: 50px;
+    height: 2px;
+    @extend .bg-lightGreen
+  }
+  .success-circle-inside {
+    left: 2px;
+    top: 2px;
+    width: 20px;
+    height: 20px; //正圓形，所以寬與高都設一樣
+    border-radius:999em;
+    @extend .bg-darkGreen
+  }
+  .success-circle-line {
+    top: 10px;
+    left: 22px;
+    width: 60px;
+    height: 2px;
+    @extend .bg-darkGreen
+  }
+  .successPage {
+    overflow: hidden;
+    min-height: 500px;
+  }
+  .successPage {
+    background: url(../asset/img/success.jpeg);
+    background-size:cover;
+    background-position:center center;
+  }
+}
+
+@import "mediaQuery";

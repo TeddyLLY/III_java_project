@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.livestream.model.HistoryVideoVO" table="History_Video" >
+        
+        <id name="history_video_no" column="history_video_no">
+           <generator class="generator.MyGenerator_lsId"/> 
+        </id>
+   
+        <property name="history_video_time" column="history_video_time" />
+        <property name="history_video_title" column="history_video_title" />
+        <property name="history_video_content" column="history_video_content" />
+         
+         <property name="live_no" column="live_no" />
+         <property name="coach_no" column="coach_no" />
+        
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,373 @@
+@media (max-width: 979px) {
+  .wrap {
+    .header {
+      min-height: 91px;
+      li {
+        text-align: center;
+      }
+    }
+    .banner {
+      margin: 0;
+    }
+    .productList {
+      ul li .price{
+        font-size: 18px; 
+      }
+    }
+    .subMenu {
+      top: - 60px;
+      ul {
+        li {
+          height: 80%;
+          width: 30%;
+          img {
+            width: 100%;
+          }
+        }
+      }
+    }
+    .footer {
+      margin: 0;
+      .subscription {
+        padding: 20px 60px;
+        flex-direction: row;
+        justify-content:center;
+        .subscriptionTitle{
+          width: 50%;
+          justify-content:center;
+          margin: 0px 0;
+        }
+      }
+    }
+    .checkoutPage {
+      .checkoutTitle {
+        h2 {
+          margin: 0;
+          font-size: 28px;
+        }
+      }
+    }
+    .cartListCount {
+      margin: 0 1.5rem;
+    }
+  }
+}
+@media (max-width: 768px) {
+  .wrap {
+    .header {
+      .mainMenu {
+        flex-direction:row-reverse;
+        text-align: center;
+        ul {
+          margin-top:40px;
+          li {
+            width: 100%;
+          }
+        }
+        .button {
+          width: 60px;
+          height: 48px;
+          position: absolute;
+          left: 0;
+          top: 25px;
+          cursor: pointer;
+          z-index: 10000;
+        }
+        .button:after {
+          position: absolute;
+          top: 22px;
+          right: 20px;
+          display: block;
+          height: 4px;
+          width: 20px;
+          border-top: 2px solid $darkGreen;
+          border-bottom: 2px solid $darkGreen;
+          content: '';
+      }
+      .button:before {
+          transition: all .3s ease;
+          position: absolute;
+          top: 16px;
+          right: 20px;
+          display: block;
+          height: 2px;
+          width: 20px;
+          background: $darkGreen;
+          content: '';
+      }
+      /* Turn it into an X when open */
+          .button.menu-opened:after {
+            transition: all .3s ease;    
+            top: 23px;
+            border: 0;
+            height: 2px;
+            width: 19px;
+            background: $darkGreen;
+            transform: rotate(45deg);
+        }
+        .button.menu-opened:before {
+            top: 23px;
+            background: $darkGreen;
+            width: 19px;
+            transform: rotate(-45deg);
+        }
+        .logo{
+          text-align: center;
+          a {
+            width:100px;
+            height: 16px;
+            background-image: url(../asset/img/logotype-lg-dark.svg);
+          }
+        }
+      }
+    }
+    .subMenu {
+      top: - 50px;
+      ul li {
+        width: 100%;
+      }
+    }
+    .content{
+      width: 100%;
+      flex-direction: column;
+      margin: 0;
+      align-items:center;
+      .lightGreenBg {
+        margin: 0 0 60px 0;
+        .contentItem {
+        flex-direction:column;
+        max-height: 5000px;
+        position: static;
+        }
+        .contentTitle {
+          width: 100%;
+          margin: 0;
+          h2 {
+            margin: 20px 0;
+            font-family: ‘cwTeXMing’, serif;
+            writing-mode: horizontal-tb;
+            text-align: center;
+          }
+        }
+        .Title, .Title2 {
+          background: #FFF;
+          order:1;
+        }
+        .Img,.Img2  {
+          order:2;
+          margin: 20px auto;
+          width: 80%;
+          height: 300px;
+        }
+        .Intro,.Intro2 {
+          order:3;
+        }
+        .contentIntro {
+          margin: 0 auto;
+          width: 80%;
+          order:3;
+          writing-mode: horizontal-tb;
+          padding: 20px;
+          letter-spacing: 2px;
+          line-height: 1.5;
+          color: $darkGreen;
+          font-size: 16px;
+        }
+      }
+    }
+    .subBanner {
+      padding: 0px;
+    }
+    .subTitle {
+      font-family: ‘cwTeXMing’, serif;
+      writing-mode: vertical-rl;
+      font-size: 22px;
+    }
+    .productList{
+      ul {
+        li {
+          margin: 20px 0;
+          width: 80%;
+          height: 100%;
+          }
+        }
+      }
+    .footer {
+      .subscription {
+        padding: 30px 60px;
+        flex-direction: column;
+        justify-content:center;
+        .subscriptionTitle{
+          width: 100%;
+          justify-content:center;
+          margin: 20px 0;
+        }
+        .search {
+          width: 70%;
+        }
+      }
+    }
+    .copyRight {
+      flex-direction: column;
+      p {
+        font-size: 14px;
+        margin: 10px 0;
+      }
+    }
+    .allProduct, .loginPage {
+      width: 100%;
+    }
+    .contactLogin {
+      display: none;
+    }
+    .loginEmail {
+      margin-top: $space*2;
+    }
+    .loginMethod {
+      display: block;
+      h2 {
+        border: 1px solid $lightGreen;
+        display: inline-block;
+      }
+    }
+    /* sweet.html的 menuList */
+    .menuList {
+      width: 80%;
+      ul {
+        margin: 10px 0;
+      }
+    }
+    /* cart.html */
+    .forRWDLine {
+      display: block;
+      width: 100%;
+    }
+    .cartList {
+      width: 100%;
+      margin: 0;
+      .cartListTitle {
+        width: 100%;
+        h2 {
+          width: 100%;
+          margin: 0;
+          @include font-style  ( 20px, center);
+        }
+      }
+      ul {
+        width: 70%;
+        margin: 0 auto;
+        li {
+          flex-direction: column;
+          .cartListItem {
+            width: 100%;
+            justify-content:space-between;
+            .cartListImg {
+              width: 40%;
+            }
+            .cartListCount {
+              margin: 0px;
+              flex-direction: column;
+              width: 50%;
+              margin: 0 10px;
+              h2,ul {
+                width: 100%;
+                margin: 0;
+                @include font-style  ( 20px, left);
+              }
+            }
+          }
+          .cartListTotal {
+            width: 100%;
+            @include font-style  ( 20px, right);
+          }
+          i {
+            display: none;
+          }
+        }
+      }
+    }
+    .cartOrderList {
+      width: 100%;
+      margin: 0 auto;
+      h2 {
+        width: 70%;
+        margin: 0 auto;
+        @include bg-color-style ( $lightGreen, $darkGreen );
+      }
+      .cartOrderListitem {
+        width: 75%;
+        margin: 0 auto;
+        @include bg-color-style ( $white, $darkGreen );
+        li {
+          font-weight: 400;
+          @include bg-color-style ( $white, $darkGreen );
+        }
+      }
+    }
+    /* checkout.html */
+    .checkoutPage {
+      padding: 0;
+      width: 100%;
+      .checkoutForm {
+        padding: 60px;
+      }
+      .checkoutNext {
+        width: 100%;
+        padding: 0;
+      }
+    }
+    .checkList {
+      display: none;
+    }
+    .successPage {
+      margin: 0;
+    }
+  }
+}
+@media (max-width: 480px) {
+  .wrap {
+    .subMenu {
+      position: relative;
+      top: - 40px;
+      ul {
+        li {
+          height: 60%;
+        }
+      }
+    }
+    .subTitle {
+      font-family: ‘cwTeXMing’, serif;
+      writing-mode: vertical-rl;
+      font-size: 12px;
+    }
+    .footer {
+      .subscription {
+        .subscriptionTitle{
+          p {
+            font-size: 18px;
+          }
+        }
+        .search {
+          width: 100%;
+        }
+      }
+      .info {
+        padding: 50px;
+      }
+      .eatToday {
+        width: 0px;
+      }
+    }
+    .checkoutPage {
+      .checkoutForm {
+        padding: 30px;
+      }
+      .checkoutTitle {
+        h2 {
+          margin: 0;
+          font-size: 24px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,83 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+			<div class="row">
+				<div class="col-md-3">
+					<div class="category-sidebar">
+						<div class="widget category-list">
+							<h4 class="widget-header">課程相關</h4>
+							<ul class="category-list">
+								<li><a href="<%=request.getContextPath()%>/front-end/lesson/lesson_page.jsp">課程總覽 <span></span></a></li>
+								<li><a href="<%=request.getContextPath()%>/front-end/lesson/my_favorite_lesson.jsp">我的收藏 <span></span></a></li>
+								<li><a href="<%=request.getContextPath()%>/front-end/lesson/MemMyLesson.jsp">當前課程 <span></span></a></li>
+								<li><a href="<%=request.getContextPath()%>/front-end/lesson/history_lesson.jsp">歷史課程 <span></span></a></li>
+							</ul>
+						</div>
+							<div class="widget category-list">
+							<h4 class="widget-header">預約相關</h4>
+							<ul class="category-list">
+								<li><a href="<%=request.getContextPath()%>/front-end/appointment_order/MemUnCheckedAppointment.jsp">待確認預約 <span></span></a></li>
+								<li><a href="<%=request.getContextPath()%>/front-end/appointment_order/MemProgressingAppointment.jsp">當前預約 <span></span></a></li>
+								<li><a href="<%=request.getContextPath()%>/front-end/appointment_order/MemAppointmentHistory.jsp">預約紀錄 <span></span></a></li>
+							</ul>
+						</div>	
+						<div class="widget category-list" id="datemy">
+							<h4 class="widget-header">我的行程</h4>
+							<input type='hidden' id="datepicker" name="memberDate" class="datepicker-here"/>
+							<ul class="category-list " style="font-size:5px;padding-top: 5px;padding-left: 5%;">
+							<li style="color:#82ef5c;" class="fa fa-bookmark"></li>課程
+							<li style="color:#ffc653;" class="fa fa fa-bookmark"></li>預約
+							</ul>
+						</div>				
+					</div>
+				</div>
+<script>
+
+var MyPoint9 = "/LessonWS/";
+var path = window.location.pathname;
+var webCtx = path.substring(0, path.indexOf('/', 1));    
+var ws;
+
+	function leConnect() {
+	var myNo = '${memberVO.member_no}';
+    var endPointURL1 = "wss://" + window.location.host + webCtx + MyPoint9+myNo;
+    ws = new WebSocket(endPointURL1);
+    ws.onopen = function() {
+    	console.log('Connection opened!'+endPointURL1);
+    };
+    ws.onmessage = function(event) {
+        var message = JSON.parse(event.data).message;
+        var action = JSON.parse(event.data).action;
+        var coachName = JSON.parse(event.data).coachName;
+        if(action==="changeDateSuccess"){
+   		 Swal.fire({
+			 title: '就在剛剛~教練 '+coachName+' 已經幫你把你的預約調課好囉~',	
+			 				
+				}).then((result) => {
+							  if (result.value) {
+								  window.location.replace("<%=request.getContextPath()%>/front-end/appointment_order/MemProgressingAppointment.jsp");  
+				}})
+        }
+        if(action==="quoteprice"){
+   		 Swal.fire({
+			 title:'教練 '+coachName+' 已經為你的訂單報價囉',					
+				})
+        }  
+        if(action==="coachScheduleUpdate"){
+		csDate();cslessonDate();csappointmentDate();
+		picker3.update('onRenderCell');
+        }       
+    };
+    ws.onclose = function() {
+    	console.log('WebSocket closed'+endPointURL1);
+    };
+    ws.onerror = function(err) {
+    	console.log(err);
+    };
+};
+
+function sendMessage2() {
+	var yourNo = $('#yourNo').val();
+	var message = $('#text_name3').val();
+       var jsonObj = {"message" : message ,"yourNo":yourNo,"action":"sendMessage"};
+       ws.send(JSON.stringify(jsonObj));
+}
+</script>					

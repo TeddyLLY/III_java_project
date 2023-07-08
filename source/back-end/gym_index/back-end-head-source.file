@@ -1,0 +1,26 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+  <!-- Favicons -->
+  <link href="<%= request.getContextPath()%>/back-end/gym_index/img/favicon.png" rel="icon">
+  <link href="<%= request.getContextPath()%>/back-end/gym_index/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Bootstrap core CSS -->
+  <link href="<%= request.getContextPath()%>/back-end/gym_index/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+
+
+ 
+  <!-- js placed at the end of the document so the pages load faster -->
+  <script src="<%= request.getContextPath()%>/back-end/gym_index/lib/jquery/jquery.min.js"></script>
+
+  <script src="<%= request.getContextPath()%>/back-end/gym_index/lib/bootstrap/js/bootstrap.min.js"></script>
+  <script class="include" type="text/javascript" src="<%= request.getContextPath()%>/back-end/gym_index/lib/jquery.dcjqaccordion.2.7.js"></script>
+  <script src="<%= request.getContextPath()%>/back-end/gym_index/lib/jquery.scrollTo.min.js"></script>
+  <script src="<%= request.getContextPath()%>/back-end/gym_index/lib/jquery.nicescroll.js" type="text/javascript"></script>
+  <script src="<%= request.getContextPath()%>/back-end/gym_index/lib/jquery.sparkline.js"></script>
+  <!--common script for all pages-->
+  <script src="<%= request.getContextPath()%>/back-end/gym_index/lib/common-scripts.js"></script>
+  <script type="text/javascript" src="<%= request.getContextPath()%>/back-end/gym_index/lib/gritter/js/jquery.gritter.js"></script>
+  <script type="text/javascript" src="<%= request.getContextPath()%>/back-end/gym_index/lib/gritter-conf.js"></script>
+ 

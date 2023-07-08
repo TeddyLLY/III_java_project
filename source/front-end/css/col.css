@@ -1,0 +1,404 @@
+    .conta {
+        display: flex;
+        display: -webkit-flex;
+        flex-direction: row;
+        -webkit-flex-direction: row;
+        width: 80%;
+        min-width: 400px;
+        margin: auto;
+        justify-content: center;
+    }
+    
+    .menu-column {
+        position: relative;
+        width: 6%;
+        max-width: 50px;
+        background: linear-gradient(#2e96ea, #30c8ca);
+        min-width: 70px;
+    }
+    
+    .menu-column .profile {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 65px;
+    }
+    
+    .menu-column .profile img {
+        position: relative;
+        width: 40%;
+        height: 40%;
+    }
+    
+    .menu-column .profile:after {
+        content: '';
+        display: block;
+        height: 10px;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 80%;
+        background-color: rgba(245, 244, 120, 0.7);
+    }
+    
+    .menu-column .nav {
+        list-style-type: none;
+        margin: 0 0 80px;
+        padding: 0;
+    }
+    
+    .menu-column .nav li {
+        width: 100%;
+        height: 3.5em;
+        margin: 0;
+    }
+    
+    .menu-column .nav li:hover {
+        background-color: #57a8ed;
+        cursor: pointer;
+    }
+    
+    .menu-column .pulse,
+    .menu-column .chat,
+    .menu-column .calendar,
+    .menu-column .clipboard,
+    .menu-column .settings {
+        background-image: url("https://svgshare.com/i/4w9.svg");
+        background-position: center;
+        background-size: 25px;
+        background-repeat: no-repeat;
+    }
+    
+    .menu-column .chat {
+        background-image: url("https://svgshare.com/i/4uF.svg");
+    }
+    
+    .menu-column .calendar {
+        background-image: url("https://svgshare.com/i/4vc.svg");
+    }
+    
+    .menu-column .clipboard {
+        background-image: url("https://svgshare.com/i/4wJ.svg");
+    }
+    
+    .menu-column .settings {
+        background-image: url("https://svgshare.com/i/4vd.svg");
+    }
+    
+    .float-none {
+        clear: both;
+    }
+    
+    .summary-column {
+        position: relative;
+        z-index: 2;
+        width: 17%;
+        min-width: 160px;
+        max-width: 220px;
+        background: linear-gradient(#5a89b1, #42656f);
+    }
+    
+    .summary-column .profile-img {
+        position: relative;
+        height: 331px;
+    }
+    
+    .summary-column .profile-img img {
+        width: 80%;
+        height: 80%;
+    }
+    
+    .summary-column .profile-img .name {
+        position: absolute;
+        bottom: 25px;
+        left: 1em;
+        color: white;
+        font-size: 1.5em;
+        font-weight: 240;
+    }
+    
+    .summary-column .statistics {
+        margin: 20px 6% 0 6%;
+    }
+    
+    .summary-column .statistics h2 {
+        color: #a1afbc;
+        text-transform: uppercase;
+        font-size: 0.75em;
+        letter-spacing: 1px;
+    }
+    
+    .summary-column .statistics .age,
+    .summary-column .statistics .weight,
+    .summary-column .statistics .bmi,
+    .summary-column .statistics .summary-column .statistics .fat {
+        display: block;
+        width: 50%;
+        height: 100px;
+        box-sizing: border-box;
+        float: left;
+        border-right: 1px solid rgba(255, 255, 255, 0.2);
+        text-align: center;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .summary-column .statistics .title {
+        color: white;
+        letter-spacing: 2px;
+        font-size: 1.5em;
+        position: relative;
+        margin-top: -13px;
+        display: block;
+        line-height: 100px;
+        vertical-align: middle;
+    }
+    
+    .summary-column .statistics .title:after {
+        color: #90a0aa;
+        font-size: 0.7em;
+        letter-spacing: 0px;
+        position: absolute;
+        bottom: -26px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .summary-column .statistics .weight {
+        border-right: none;
+    }
+    
+    .summary-column .statistics .title-weight:after {
+        content: 'Weight';
+    }
+    
+    .summary-column .statistics .title-age:after {
+        content: 'Age';
+    }
+    
+    .summary-column .statistics .title-bmi:after {
+        content: 'BMI';
+    }
+    
+    .summary-column .statistics .title-fat:after {
+        content: 'Fat';
+    }
+    
+    .summary-column .statistics .height {
+        height: 100;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .summary-column .statistics .height .icon {
+        display: block;
+        width: 50%;
+        height: 80%;
+        float: left;
+        background: url("https://svgshare.com/i/4xQ.svg");
+        background-size: 120px;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+    
+    .summary-column .statistics .height .data {
+        display: block;
+        width: 50%;
+        float: left;
+    }
+    
+    .summary-column .statistics .height .data span {
+        display: block;
+        position: relative;
+        line-height: 130px;
+        vertical-align: middle;
+        font-size: 1.75em;
+        color: white;
+    }
+    
+    .summary-column .statistics .height .data span:after {
+        content: 'Height';
+        color: #90a0aa;
+        font-size: 0.7em;
+        line-height: 20px;
+        letter-spacing: 0px;
+        position: absolute;
+        left: 0;
+        bottom: 25px;
+    }
+    
+    .summary-column .statistics .bmi,
+    .summary-column .statistics .fat {
+        border-bottom: none;
+    }
+    
+    .summary-column .statistics .fat {
+        border-right: none;
+    }
+    
+    .summary-column .statistics .percentage {
+        font-size: 0.7em;
+        line-height: 0.7em;
+    }
+    
+    .summary-column .allergies {
+        padding-top: 20px;
+    }
+    
+    .summary-column .row {
+        position: relative;
+        height: 50px;
+        line-height: 50px;
+        text-transform: capitalize;
+        border-top: 1px solid #537482;
+        color: #f1f3f4;
+        font-size: 0.8em;
+    }
+    
+    .summary-column .row:last-child {
+        border-bottom: 1px solid #537482;
+        margin-bottom: 50px;
+    }
+    
+    .summary-column .row .severity {
+        position: absolute;
+        top: 50%;
+        left: 75%;
+        transform: translate(-50%, -75%);
+        width: 100px;
+        height: 5px;
+        background: #567681;
+    }
+    
+    .summary-column .row .fill {
+        background: #c3f8ab;
+    }
+    
+    .content-column {
+        background: white;
+        width: 62%;
+        min-width: 650px;
+        z-index: 0;
+    }
+    
+    @media only screen and (max-width: 1250px) {
+        .content-column {
+            width: 77%;
+        }
+    }
+    
+    .content-column .header-conta {
+        width: 100%;
+        height: 331px;
+        overflow: hidden;
+    }
+    
+    .content-column .nav {
+        width: 50%;
+        float: left;
+        font-size: 0.9em;
+        font-weight: 500;
+        line-height: 1;
+    }
+    
+    .content-column .nav .content {
+        margin: 50px 0 0 50px;
+        white-space: nowrap;
+    }
+    
+    .content-column .nav p {
+        text-transform: uppercase;
+        color: #899191;
+        letter-spacing: 1px;
+    }
+    
+    .content-column .nav .name {
+        color: #636d6d;
+    }
+    
+    .content-column .nav .shape {
+        font-family: 'Nunito', sans-serif;
+        font-weight: 200;
+        font-size: 6em;
+        color: #8b9494;
+    }
+    
+    .content-column .nav .score {
+        color: #34d0c4;
+    }
+    
+    .content-column .select-boxes {
+        float: left;
+        width: 50%;
+    }
+    
+    .content-column .select-boxes .content {
+        margin: 40px;
+        float: right;
+    }
+    
+    .content-column .split-conta {
+        display: flex;
+        display: -webkit-flex;
+        flex-direction: row;
+        -webkit-flex-direction: row;
+        width: 100%;
+        margin: auto;
+        justify-content: center;
+    }
+    
+    .content-column .split-conta .split {
+        position: relative;
+        width: calc(100% / 3);
+        min-width: 250px;
+        text-align: center;
+        font-size: 1em;
+        font-weight: 300;
+        border-right: 1px solid #dddfe1;
+        border-bottom: 1px solid #dddfe1;
+    }
+    
+    .content-column .split-conta .split .split-graph {
+        max-width: 100%;
+        height: 125px;
+        overflow: hidden;
+    }
+    
+    .content-column .split-conta .split h3 {
+        font-size: 1em;
+        font-weight: 300;
+        margin: 50px 0 0 0;
+        color: #566161;
+    }
+    
+    .content-column .split-conta .split:last-child {
+        border-right: none;
+    }
+    
+    .content-column .split-conta .temperature,
+    .content-column .split-conta .calories,
+    .content-column .split-conta .content-column .split-conta .heart-rate {
+        display: block;
+        color: #58676c;
+        font-size: 1em;
+        line-height: 1em;
+        width: 175px;
+        margin: auto;
+        position: relative;
+        font-weight: 300;
+        margin: 10px auto;
+    }
+    
+    .content-column .split-conta .temperature:before,
+    .content-column .split-conta .calories:before,
+    .content-column .split-conta .content-column .split-conta .heart-rate:before {
+        content: '';
+        position: absolute;
+        height: 35px;
+        width: 35px;
+        background: url('https://svgshare.com/i/50V.svg');
+        background-size: 35px 35px;
+        background-position: center;
+        background-repeat: no-repeat;
+        left: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+    }

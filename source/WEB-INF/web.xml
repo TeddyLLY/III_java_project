@@ -1,0 +1,628 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" version="4.0">
+  <display-name>DA105G6</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  <resource-ref>
+    <description>DB Connection</description>
+    <res-ref-name>jdbc/DA105G6</res-ref-name>
+    <res-type>javax.sql.DataSource</res-type>
+    <res-auth>Container</res-auth>
+  </resource-ref>
+  
+  
+  <servlet>
+    <servlet-name>ProductServlet</servlet-name>
+    <servlet-class>com.product.controller.ProductServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ProductServlet</servlet-name>
+    <url-pattern>/product/product.do</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+    <servlet-name>ProductOrderDetailServlet</servlet-name>
+    <servlet-class>com.product_order_detail.controller.ProductOrderDetailServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ProductOrderDetailServlet</servlet-name>
+    <url-pattern>/productOrderDetail/productOrderDetail.do</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+    <servlet-name>DBGifReader4</servlet-name>
+    <servlet-class>com.product.controller.DBGifReader4</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DBGifReader4</servlet-name>
+    <url-pattern>/product/DBGifReader4</url-pattern>
+  </servlet-mapping>
+    <servlet>
+    <servlet-name>DBGifReader3</servlet-name>
+    <servlet-class>com.tool.DBGifReader3</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DBGifReader3</servlet-name>
+    <url-pattern>/DBGifReader3</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ShoppingCartServlet</servlet-name>
+    <servlet-class>com.shopping_cart.controller.ShoppingCartServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShoppingCartServlet</servlet-name>
+    <url-pattern>/Shopping/ShoppingCartServlet</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+    <servlet-name>FavoriteProductServlet</servlet-name>
+    <servlet-class>com.favorite_product.controller.FavoriteProductServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FavoriteProductServlet</servlet-name>
+    <url-pattern>/FavoriteProduct/FavoriteProductServlet</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+    <servlet-name>ReportProductServlet</servlet-name>
+    <servlet-class>com.report_product.controller.ReportProductServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ReportProductServlet</servlet-name>
+    <url-pattern>/ReportProduct/ReportProductServlet</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+    <servlet-name>ProductOrderServlet</servlet-name>
+    <servlet-class>com.product_order.controller.ProductOrderServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ProductOrderServlet</servlet-name>
+    <url-pattern>/ProductOrder/ProductOrderServlet</url-pattern>
+  </servlet-mapping>
+  
+  
+  <listener>
+    <listener-class>com.toolclass.StatusListener</listener-class>
+  </listener>
+
+  <servlet>
+    <servlet-name>CoachServlet</servlet-name>
+    <servlet-class>com.coach.controller.CoachServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CoachServlet</servlet-name>
+    <url-pattern>/coach.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>CoachBackServlet</servlet-name>
+    <servlet-class>com.coach.controller.CoachBackServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CoachBackServlet</servlet-name>
+    <url-pattern>/coach_back.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>CoachPhotoReader</servlet-name>
+    <servlet-class>com.coach.model.CoachPhotoReader</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CoachPhotoReader</servlet-name>
+    <url-pattern>/CoachPhotoReader</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>CoachLicenseReader</servlet-name>
+    <servlet-class>com.coach.model.CoachLicenseReader</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CoachLicenseReader</servlet-name>
+    <url-pattern>/CoachLicenseReader</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>MemberServlet</servlet-name>
+    <servlet-class>com.member.controller.MemberServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MemberServlet</servlet-name>
+    <url-pattern>/member.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>MemberBackServlet</servlet-name>
+    <servlet-class>com.member.controller.MemberBackServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MemberBackServlet</servlet-name>
+    <url-pattern>/member_back.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>MemberReader</servlet-name>
+    <servlet-class>com.member.model.MemberReader</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MemberReader</servlet-name>
+    <url-pattern>/MemberReader</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ReportCoachServlet</servlet-name>
+    <servlet-class>com.report_coach.controller.ReportCoachServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ReportCoachServlet</servlet-name>
+    <url-pattern>/reportCoach.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ReportCoachBackServlet</servlet-name>
+    <servlet-class>com.report_coach.controller.ReportCoachBackServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ReportCoachBackServlet</servlet-name>
+    <url-pattern>/reportCoach_back.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>SystemNewsServlet</servlet-name>
+    <servlet-class>com.system_news.controller.SystemNewsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SystemNewsServlet</servlet-name>
+    <url-pattern>/systemNews.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>SystemNewsBackServlet</servlet-name>
+    <servlet-class>com.system_news.controller.SystemNewsBackServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SystemNewsBackServlet</servlet-name>
+    <url-pattern>/systemNews_back.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>TopUpRecordServlet</servlet-name>
+    <servlet-class>com.top_up_record.controller.TopUpRecordServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TopUpRecordServlet</servlet-name>
+    <url-pattern>/topUpRecord.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>TopUpRecordBackServlet</servlet-name>
+    <servlet-class>com.top_up_record.controller.TopUpRecordBackServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TopUpRecordBackServlet</servlet-name>
+    <url-pattern>/topUpRecord_back.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ChatRoomServlet</servlet-name>
+    <servlet-class>com.chat_room.controller.ChatRoomServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ChatRoomServlet</servlet-name>
+    <url-pattern>/chatRoom.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>MailServer</servlet-name>
+    <servlet-class>com.toolclass.MailServer</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MailServer</servlet-name>
+    <url-pattern>/MailServer.do</url-pattern>
+  </servlet-mapping>
+   <filter>
+    <filter-name>CoachFilter</filter-name>
+    <filter-class>com.coach.controller.CoachFliter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>CoachFilter</filter-name>
+    <url-pattern>/front-end/coach/*</url-pattern>
+    <url-pattern>/front-end/appointment_order/CoachAppointmentHistory.jsp</url-pattern>
+    <url-pattern>/front-end/appointment_order/CoachChangeAppointmentDate.jsp</url-pattern>
+    <url-pattern>/front-end/appointment_order/CoachProgressingAppointment.jsp</url-pattern>
+    <url-pattern>/front-end/appointment_order/CoachUnCheckedAppointment.jsp</url-pattern>
+    <url-pattern>/front-end/lesson/Coach_add_lesson.jsp</url-pattern>
+    <url-pattern>/front-end/lesson/Coach_lesson_history.jsp</url-pattern>
+    <url-pattern>/front-end/lesson/Coach_lesson_page.jsp</url-pattern>
+    <url-pattern>/front-end/lesson/Coach_update_lesson.jsp</url-pattern>
+    <url-pattern>/front-end/lesson/Coach_view_one_lesson.jsp</url-pattern>    
+    <dispatcher>REQUEST</dispatcher>
+    <dispatcher>FORWARD</dispatcher>
+    <dispatcher>INCLUDE</dispatcher>
+    <dispatcher>ERROR</dispatcher>
+    <dispatcher>ASYNC</dispatcher>
+  </filter-mapping>
+  <filter>
+    <filter-name>MemberFilter</filter-name>
+    <filter-class>com.member.controller.MemberFliter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>MemberFilter</filter-name>
+    <url-pattern>/front-end/member/*</url-pattern>
+    <url-pattern>/front-end/shop/cart.jsp</url-pattern>
+    <url-pattern>/front-end/shop/checkout.jsp</url-pattern>
+    <url-pattern>/front-end/shop/shop-order.jsp</url-pattern>
+    <url-pattern>/front-end/appointment_order/MemAppointmentHistory.jsp</url-pattern>
+    <url-pattern>/front-end/appointment_order/MemProgressingAppointment.jsp</url-pattern>
+    <url-pattern>/front-end/appointment_order/MemUnCheckedAppointment.jsp</url-pattern>
+    <url-pattern>/front-end/lesson/MemMyLesson.jsp</url-pattern>
+    <url-pattern>/front-end/lesson/my_favorite_lesson.jsp</url-pattern>
+    <dispatcher>REQUEST</dispatcher>
+    <dispatcher>FORWARD</dispatcher>
+    <dispatcher>INCLUDE</dispatcher>
+    <dispatcher>ERROR</dispatcher>
+    <dispatcher>ASYNC</dispatcher>
+  </filter-mapping>
+   <filter>
+    <filter-name>LessonFilter</filter-name>
+    <filter-class>com.lesson.controller.LessonFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>LessonFilter</filter-name>
+    <url-pattern>/front-end/appointment_order/MemAppointmentHistory.jsp</url-pattern>
+    <url-pattern>/front-end/appointment_order/MemProgressingAppointment.jsp</url-pattern>
+    <url-pattern>/front-end/appointment_order/MemUnCheckedAppointment.jsp</url-pattern>
+    <url-pattern>/front-end/lesson/MemMyLesson.jsp</url-pattern>
+    <url-pattern>/front-end/lesson/my_favorite_lesson.jsp</url-pattern>
+    <url-pattern>/front-end/lesson/lesson_page.jsp</url-pattern>
+    <dispatcher>REQUEST</dispatcher>
+    <dispatcher>FORWARD</dispatcher>
+    <dispatcher>INCLUDE</dispatcher>
+    <dispatcher>ERROR</dispatcher>
+    <dispatcher>ASYNC</dispatcher>
+  </filter-mapping>
+  
+  
+  
+  
+  <servlet>
+    <servlet-name>MemberLessonServlet</servlet-name>
+    <servlet-class>com.member_lesson_detail.controller.MemberLessonServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MemberLessonServlet</servlet-name>
+    <url-pattern>/member_lesson_detail/memberLessonDetail.do</url-pattern>
+  </servlet-mapping>
+     
+     
+     
+     
+     
+     
+     
+<servlet>
+    <servlet-name>EmployeeServlet</servlet-name>
+    <servlet-class>com.employee.controller.EmployeeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EmployeeServlet</servlet-name>
+    <url-pattern>/employee/employee.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>QaServlet</servlet-name>
+    <servlet-class>com.qa.controller.QaServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>QaServlet</servlet-name>
+    <url-pattern>/qa/qa.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>Employee_functionServlet</servlet-name>
+    <servlet-class>com.employee_function.controller.Employee_functionServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Employee_functionServlet</servlet-name>
+    <url-pattern>/function/fun.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>GymServlet</servlet-name>
+    <servlet-class>com.gym.controller.GymServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GymServlet</servlet-name>
+    <url-pattern>/gym/gym.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>NewsServlet</servlet-name>
+    <servlet-class>com.news.controller.NewsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>NewsServlet</servlet-name>
+    <url-pattern>/news/news.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AuthorityServlet</servlet-name>
+    <servlet-class>com.gym.controller.AuthorityServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AuthorityServlet</servlet-name>
+    <url-pattern>/authority/authority.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>DBGifReader</servlet-name>
+    <servlet-class>com.dbgifreader.DBGifReader</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DBGifReader</servlet-name>
+    <url-pattern>/employee/DBGifReader</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>DBGifReader1</servlet-name>
+    <servlet-class>com.gym.controller.DBGifReader</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DBGifReader1</servlet-name>
+    <url-pattern>/gym/DBGifReader</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>EmployeeLogin</servlet-name>
+    <servlet-class>com.employee.controller.EmployeeLogin</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EmployeeLogin</servlet-name>
+    <url-pattern>/login/EmployeeLogin</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>Clime</servlet-name>
+    <servlet-class>com.tool.Clime</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Clime</servlet-name>
+    <url-pattern>/clime/clime.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AjaxServlet</servlet-name>
+    <servlet-class>com.tool.controller.AjaxServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AjaxServlet</servlet-name>
+    <url-pattern>/ajax/ajaxClime.do</url-pattern>
+  </servlet-mapping> 
+    <servlet>
+    <servlet-name>MyCrawler</servlet-name>
+    <servlet-class>com.tool.MyCrawler</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MyCrawler</servlet-name>
+    <url-pattern>/ajax2/MyCrawler.do</url-pattern>
+  </servlet-mapping>
+  
+  <filter>
+    <filter-name>EmployeeFilter</filter-name>
+    <filter-class>com.employee.controller.EmployeeFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>EmployeeFilter</filter-name>
+    <url-pattern>/back-end/product/*</url-pattern>
+    <url-pattern>/back-end/coach-back/*</url-pattern>
+    <url-pattern>/back-end/member-back/*</url-pattern>
+    <url-pattern>/back-end/product_Order/*</url-pattern>
+    <url-pattern>/back-end/product_report/*</url-pattern>
+    <url-pattern>/back-end/report-coach-back/*</url-pattern>
+    <url-pattern>/back-end/system-news-back/*</url-pattern>
+    <url-pattern>/back-end/qa/*</url-pattern>
+    <dispatcher>REQUEST</dispatcher>
+    <dispatcher>FORWARD</dispatcher>
+    <dispatcher>INCLUDE</dispatcher>
+    <dispatcher>ERROR</dispatcher>
+    <dispatcher>ASYNC</dispatcher>
+  </filter-mapping>
+  
+  
+  
+  
+  
+  
+   <servlet>
+    <servlet-name>ArticleServlet</servlet-name>
+    <servlet-class>com.article.controller.ArticleServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ArticleServlet</servlet-name>
+    <url-pattern>/article/article.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>LiveServlet</servlet-name>
+    <servlet-class>com.live.controller.LiveServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LiveServlet</servlet-name>
+    <url-pattern>/live/live.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ReplyArticleServlet</servlet-name>
+    <servlet-class>com.reply_article.controller.ReplyArticleServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ReplyArticleServlet</servlet-name>
+    <url-pattern>/reply_article/reply_article.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ReportArticleServlet</servlet-name>
+    <servlet-class>com.report_article.controller.ReportArticleServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ReportArticleServlet</servlet-name>
+    <url-pattern>/report_article/report_article.do</url-pattern>
+  </servlet-mapping>
+   <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>RTCPeerConnection</web-resource-name>
+      <url-pattern>/live/*</url-pattern>
+      <http-method>GET</http-method>
+      <http-method>POST</http-method>
+    </web-resource-collection>
+    <user-data-constraint>
+      <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+    </user-data-constraint>
+  </security-constraint>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <servlet>
+    <servlet-name>DBImgReader</servlet-name>
+    <servlet-class>DBImgReader</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DBImgReader</servlet-name>
+    <url-pattern>/DBImgReader.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>FavoriteLessonServlet</servlet-name>
+    <servlet-class>com.favorite_lesson.controller.FavoriteLessonServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FavoriteLessonServlet</servlet-name>
+    <url-pattern>/favorite_lesson/favoriteLesson.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>LessonServlet</servlet-name>
+    <servlet-class>com.lesson.controller.LessonServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LessonServlet</servlet-name>
+    <url-pattern>/lesson/lesson.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>LessonDetailServlet</servlet-name>
+    <servlet-class>com.lesson_detail.controller.LessonDetailServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LessonDetailServlet</servlet-name>
+    <url-pattern>/lesson_detail/lessonDetail.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>LessonOrderServlet</servlet-name>
+    <servlet-class>com.lesson_order.controller.LessonOrderServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LessonOrderServlet</servlet-name>
+    <url-pattern>/lesson_order/lessonOrder.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AppointmentOrderServlet</servlet-name>
+    <servlet-class>com.appointment_order.controller.AppointmentOrderServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AppointmentOrderServlet</servlet-name>
+    <url-pattern>/appointment_order/appointmentOrder.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>CoachScheduleServlet</servlet-name>
+    <servlet-class>com.coach_schedule.controller.CoachScheduleServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CoachScheduleServlet</servlet-name>
+    <url-pattern>/coach_schedule/coachSchedule.do</url-pattern>
+  </servlet-mapping>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>RTCPeerConnection</web-resource-name>
+      <url-pattern>/front-end/live/*</url-pattern>
+      <http-method>GET</http-method>
+      <http-method>POST</http-method>
+    </web-resource-collection>
+    <user-data-constraint>
+      <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+    </user-data-constraint>
+  </security-constraint>
+   <security-constraint>
+   <web-resource-collection>
+      <web-resource-name>Session_Set</web-resource-name>
+      <url-pattern>/Session_Set</url-pattern>
+      <http-method>GET</http-method>
+      <http-method>POST</http-method>
+    </web-resource-collection>
+    <user-data-constraint>
+      <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+    </user-data-constraint>
+  </security-constraint>
+  
+  
+  
+  
+  <servlet>
+    <servlet-name>ProductServletAndroid</servlet-name>
+    <servlet-class>com.product.controller.ProductServletAndroid</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ProductServletAndroid</servlet-name>
+    <url-pattern>/ProductServletAndroid</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ProductOrderServletAndroid</servlet-name>
+    <servlet-class>com.product_order.controller.ProductOrderServletAndroid</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ProductOrderServletAndroid</servlet-name>
+    <url-pattern>/ProductOrderServletAndroid</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>MemberServletAndroid</servlet-name>
+    <servlet-class>com.member.controller.MemberServletAndroid</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MemberServletAndroid</servlet-name>
+    <url-pattern>/MemberServletAndroid</url-pattern>
+  </servlet-mapping>
+   <servlet>
+    <servlet-name>LessonServletAndroid</servlet-name>
+    <servlet-class>com.lesson.controller.LessonServletAndroid</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LessonServletAndroid</servlet-name>
+    <url-pattern>/LessonServletAndroid</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>CoachServletAndroid</servlet-name>
+    <servlet-class>com.coach.controller.CoachServletAndroid</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CoachServletAndroid</servlet-name>
+    <url-pattern>/CoachServletAndroid</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AppointmentOrderServletAndroid</servlet-name>
+    <servlet-class>com.appointment_order.controller.AppointmentOrderServletAndroid</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AppointmentOrderServletAndroid</servlet-name>
+    <url-pattern>/AppointmentOrderServletAndroid</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AppointmentOrderDetailServletAndroid</servlet-name>
+    <servlet-class>com.appointment_order_detail.controller.AppointmentOrderDetailServletAndroid</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AppointmentOrderDetailServletAndroid</servlet-name>
+    <url-pattern>/AppointmentOrderDetailServletAndroid</url-pattern>
+  </servlet-mapping>
+  
+  
+  
+  </web-app>

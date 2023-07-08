@@ -1,0 +1,540 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="java.util.*"%>
+<%@ page import="com.member.model.*"%>
+<%@ page import="com.appointment_order.model.*"%>
+<!DOCTYPE html>
+<% 
+   MemberVO memVO = (MemberVO)session.getAttribute("memberVO");
+   AppointmentOrderService apmtSvc = new AppointmentOrderService() ;
+   List<AppointmentOrderVO> list = apmtSvc.getMemAll(memVO.getMember_no());
+   
+%>
+<html>
+<head>
+
+<title>當前預約</title>
+<!-- jQuery -->
+<script src="<%=request.getContextPath()%>/lesson_pkg/js/jquery-3.4.1.min.js"></script>
+<!-- Bootstrap -->
+<link href="<%=request.getContextPath()%>/lesson_pkg/plugins/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="<%=request.getContextPath()%>/lesson_pkg/plugins/bootstrap/bootstrap.min.js"></script>
+<!-- Font Awesome -->
+<link href="<%=request.getContextPath()%>/lesson_pkg/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+<!-- Owl Carousel -->
+<link href="<%=request.getContextPath()%>/lesson_pkg/plugins/slick-carousel/slick/slick.css" rel="stylesheet">
+<link href="<%=request.getContextPath()%>/lesson_pkg/plugins/slick-carousel/slick/slick-theme.css" rel="stylesheet">
+<!-- Fancy Box -->
+<link href="<%=request.getContextPath()%>/lesson_pkg/plugins/fancybox/jquery.fancybox.pack.css" rel="stylesheet">
+<link href="<%=request.getContextPath()%>/lesson_pkg/plugins/jquery-nice-select/css/nice-select.css" rel="stylesheet">
+<link href="<%=request.getContextPath()%>/lesson_pkg/plugins/seiyria-bootstrap-slider/dist/css/bootstrap-slider.min.css" rel="stylesheet">
+<!-- CUSTOM CSS -->
+<link href="<%=request.getContextPath()%>/lesson_pkg/css/style.css" rel="stylesheet">
+<!-- sweetAlert2 -->
+<script src="<%=request.getContextPath()%>/tools/sweetalert2/dist/sweetalert2.all.js"></script>
+<!-- air datePicker -->
+<link href="<%=request.getContextPath()%>/tools/datetimepicker/datepicker.min.css" rel="stylesheet" type="text/css">
+<script src="<%=request.getContextPath()%>/tools/datetimepicker/datepicker.min.js"></script>
+<script src="<%=request.getContextPath()%>/tools/datetimepicker/datepicker.zh.js"></script>
+
+</head>
+<style type="text/css" media="screen">
+*{
+font-family:'Noto Sans TC', sans-serif;}
+.card-img-top {
+	width: 270px;
+	height: 140px;
+}
+
+.page-search {
+	background: #C6E1FF;
+	padding: 20px;
+}
+
+#searchbtn {
+	margin-left: 10px;
+	width: 150px;
+	height: 50px;
+}
+
+#inputtext4 {
+	margin-left: 30%;
+	background-color:white;
+}
+
+h4.card-title {
+	height: 50px;
+}
+
+.card-text {
+	height: 50px;
+}
+
+.product-item .product-ratings .selected i {
+	color: #FDEB00;
+}
+a.fa.fa.fa-heart {
+	margin-top: 20px;
+	color:red;
+	cursor: pointer;
+}
+
+a.fa.fa.fa-heart-o {
+	margin-top: 20px;
+	cursor: pointer;
+}
+
+div.menu{
+	padding:0px;
+}
+
+div.border1 {
+    border:5px solid #00BFF0;
+}
+
+a.fa.fa.fa-heart-o:hover {
+  -webkit-transform: scale(1.2) translateZ(0);
+  transform: scale(1.2) translateZ(0);
+}
+a{
+font-family:'Noto Sans TC', sans-serif;}
+#datemy .datepicker{
+ height: 270px;
+ width: 190px;
+}
+.datepicker--cell.bussycoach{
+background-color:#f1eddf;
+}
+/* **schedule color** */
+.datepicker--cell.schedule{
+color: #fff;
+background-color:#c9c9c9;
+}
+.datepicker--cell.schedule.-other-month-{
+background-color:#d5d5d5
+}
+.datepicker--cell.schedule.-disabled-{
+background-color:#ecebeb
+}
+/* **lesson color** */
+.datepicker--cell.lesson{
+color: #fff;
+background-color:#82ef5c;
+}
+.datepicker--cell.lesson.-other-month-{
+background-color:#b5f29f
+}
+.datepicker--cell.lesson.-disabled-{
+background-color:#b5f29f
+}
+/* **appointment color** */
+.datepicker--cell.appointment{
+color: #fff;
+background-color:#ffc653;
+}
+.datepicker--cell.appointment.-other-month-{
+background-color:#ffe4ae;
+}
+.datepicker--cell.appointment.-disabled-{
+background-color:#ffe4ae;
+}
+/* ------------ */
+</style>
+
+
+<body class="body-wrapper">
+
+<!-- header -->
+   <!-- nav_bar 放body頭 -->
+<%@ include file="/front-end/gym_index/front-end-navbar.file" %>
+	<!-- end menu -->
+<div class="about_banner_img"><img src="<%=request.getContextPath()%>/lesson_pkg/images/workoutmain1.jpg" class="img-responsive" alt="" style='height: 100%; width: 100%; object-fit: contain'/></div>
+	<div class="about_banner_wrap">
+      	<h1 class="m_11">Progressing</h1>
+       </div>
+      <div class="border1"> </div>
+<!-- header -->
+	<section class="section-sm">
+		<div class="container">
+
+			<form METHOD="post" ACTION="<%=request.getContextPath()%>/lesson/lesson.do">
+			<div class="form-group row" id="searchbar">
+			<input type="text" name="CONCAT(LESSON_NAME,LESSON_CONTENT)" class="form-control col-md-4" id="inputtext4" placeholder="搜尋課程">
+        	<input type="hidden" name="action" value="search_lesson2">
+        			
+			<select id = "lesson_Class" name = "lesson_Class" >
+			<option value="" >全部</option>
+			<c:forEach varStatus = "varClass" begin = "0" end = "4">
+			<option value ="${varClass.index}" ${(varClass.index == lessonVO.lessonClass) ? 'selected' : '' }>${lesson_class[varClass.index]} </option>
+			</c:forEach>
+			</select>       			
+					<button type="submit" class="btn btn-primary col-md-2"
+						id="searchbtn" onClick='CheckForm(this.form)'>搜尋</button>
+				</div>
+			</form>
+			
+<%@ include file="left_bar.file" %>
+
+				<div class="col-md-9">
+					<div class="category-search-filter">
+						<div class="row">
+							<div class="col-md-6">
+								<h5><b>當前預約</b></h5>
+							</div>
+							<div class="col-md-6">
+								<div class="view">
+									<strong>Views</strong>
+									<ul class="list-inline view-switcher">
+										<li class="list-inline-item"><a
+											href="javascript:void(0);"><i class="fa fa-th-large"></i></a>
+										</li>
+										<li class="list-inline-item"><a
+											href="javascript:void(0);"><i class="fa fa-reorder"></i></a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="product-grid-list">
+						<div class="row mt-30">				 
+							<div class="col-lg-12">
+								<!-- product card -->
+								<div class="product-item bg-light">
+								
+									<div class="card widget">
+									<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">教練</th>
+      <th scope="col" style="padding-left:40px">申請時間</th>
+      <th scope="col">預約狀態</th>
+      <th scope="col">價格</th>
+      <th scope="col" style="padding-left: 40px;">明細</th>
+      <th scope="col" style="padding-left: 40px;">動作</th>
+
+    </tr>
+  </thead>  <tbody>	
+										<c:forEach var="aptmtVO" items="<%=list%>" >
+										<c:if test="${aptmtVO.appointmentStatus==1}" >										
+
+    <tr id='tr${aptmtVO.appointmentOrderNo}'>
+      <th scope="row">${aptmtVO.coachNo}</th>
+      <td><fmt:formatDate value="${aptmtVO.orderTime}" pattern="yyyy/MM/dd HH:mm"/></td>
+      <td>${appointment_status[aptmtVO.appointmentStatus]}</td>
+      <td>${aptmtVO.appointmentPrice}</td>
+      <td><button class="btn btn-light" onClick="getAPDetail('${aptmtVO.appointmentOrderNo}')" style="padding:15px 25px;">詳細內容</button></td>
+      <td><button class="btn btn-light" onClick="transferDate('${aptmtVO.appointmentOrderNo}')" style="padding:15px 25px;">申請調課</button></td>
+    </tr>	
+										</c:if></c:forEach>
+										  </tbody>
+</table>																						
+</div></div>
+							</div>					
+							
+												</div>
+				</div>	
+			</div>
+		</div>
+	</div>
+</section>
+<!-- footer -->
+  	<!-- footer 放body尾 -->
+<%@ include file="/front-end/gym_index/front-end-footer.file" %>
+<!-- footer -->
+</body>
+
+<script>
+
+//搜尋欄位限制
+function CheckForm(form)
+{  
+if($('#inputtext4').val().trim().length===0)   {  
+alert("請輸入關鍵字");
+}else{form.submit();
+}
+}
+
+//getAPdetail
+function getAPDetail(apOrderNo){
+    $.ajax({
+    	url:"<%=request.getContextPath()%>/appointment_order/appointmentOrder.do",
+    	type:"POST",
+    	data:{
+    		'action':'get_appointment_ajax',
+    		'appointmentOrderNo':apOrderNo,
+    	},
+    	success:function(apo){
+    		var apOrder=JSON.parse(apo);
+    		var appointmentOrderNo=apOrder.appointmentOrderNo;
+    		var coachNo=apOrder.coachNo;
+    		var orderTime=apOrder.orderTime;
+    		var appointmentLocation=apOrder.appointmentLocation;
+    		var appointmentDemand=apOrder.appointmentDemand;
+    		var appointmentPrice=apOrder.appointmentPrice;
+    		if(appointmentPrice==0)
+    			appointmentPrice='';    		
+    		console.log(apOrder);
+    		$.ajax({
+			url:"<%=request.getContextPath()%>/appointment_order/appointmentOrder.do",
+			type:"POST",
+			data:{
+			'action':'get_appointment_detail_ajax',
+			'appointmentOrderNo':apOrderNo,
+			},
+			
+				success:function(detail){
+				var apOrder=JSON.parse(detail);
+				var x ='';
+				var y = 0;
+				var i = 0;
+				for (i = 0; i < apOrder.length; i++){
+					var apdNo =apOrder[i].appointmentOrderDetailNo;
+					switch(apOrder[i].studentStatus){
+					case 0:
+						x=x+apOrder[i].appointmentDate+`<button class="btn btn-light" onClick="finishAPDetail('`+apdNo+`')" style="padding:15px 25px;">完成</button><br>`;
+						break;
+					case 1:	
+						x=x+apOrder[i].appointmentDate+' <i class=\"fa fa-check-square\"></i><br>';
+						y++;
+						break;								
+    				}
+				}
+				if(y==i){
+					  Swal.fire({
+						  title: '預約內容',
+						  confirmButtonText: '完成訂單',
+						  width: 500,
+						  html:`<div><b>已完成本次預約課程囉~<b></div><table class="table"><thead>`+
+							    `<tr><th scope="col" nowrap="nowrap">訂單編號`+appointmentOrderNo+`</th>
+						  		    <th scope="col" nowrap="nowrap">教練編號`+coachNo+`</th></tr>
+							  </thead><tbody>
+							    <tr><th>申請時間</th>
+								    <td>`+orderTime+`</td></tr>
+							    <tr><th scope="row">預約價格</th>
+							    	<td>`+appointmentPrice+`</td>					    				    				    
+							    </tr>						    
+							    <tr><th scope="row">預約地點</th>
+							    	<td>`+appointmentLocation+`</td>
+							    </tr><tr>
+							    <th scope="row">預約需求</th>
+							    <td>`+appointmentDemand+`</td></tr>
+							    <tr><th scope="row">預約時間</th>
+							    <td>`+x+`</td></tr></tbody>
+							</table>`,
+
+						}).then((result) => {
+							  if (result.value) {
+									$.ajax({
+										url:"<%=request.getContextPath()%>/appointment_order/appointmentOrder.do",
+										type:"POST",
+										data:{
+										'action':'finishAP',
+										'appointmentOrderNo':apOrderNo,
+										},	
+											success:function(e){
+												console.log(e);
+												  Swal.fire({
+													  title: '成功完成該筆預約訂單',
+													  icon:'success'
+											}).then((result) => {
+												  if (result.value) {
+													  window.location.replace("<%=request.getContextPath()%>/front-end/appointment_order/MemAppointmentHistory.jsp");  
+													  }
+												  })
+											}		
+									}) 
+							  }
+							  })
+				}else{					
+				  Swal.fire({
+					  title: '預約內容',
+					  width: 500,
+					  html:`<table class="table"><thead>`+
+						    `<tr><th scope="col" nowrap="nowrap">訂單編號`+appointmentOrderNo+`</th>
+					  		    <th scope="col" nowrap="nowrap">教練編號`+coachNo+`</th></tr>
+						  </thead><tbody>
+						    <tr><th>申請時間</th>
+							    <td>`+orderTime+`</td></tr>
+						    <tr><th scope="row">預約價格</th>
+						    	<td>`+appointmentPrice+`</td>					    				    				    
+						    </tr>						    
+						    <tr><th scope="row">預約地點</th>
+						    	<td>`+appointmentLocation+`</td>
+						    </tr><tr>
+						    <th scope="row">預約需求</th>
+						    <td>`+appointmentDemand+`</td></tr>
+						    <tr><th scope="row">預約時間</th>
+						    <td>`+x+`</td></tr></tbody>
+						</table>`,
+
+					})}
+	 		 							}		    	
+				});
+		  }		    	
+    }); 	
+}
+//transferDate
+function transferDate(apNo){
+	$.ajax({
+		url:"<%=request.getContextPath()%>/appointment_order/appointmentOrder.do",
+		type:"POST",
+		data:{
+		'action':'get_appointment_detail_ajax',
+		'appointmentOrderNo':apNo,
+		},
+			success:function(detail){
+				var apOrder=JSON.parse(detail);
+				var y = 0;
+				var i = 0;
+				for (i = 0; i < apOrder.length; i++){
+					switch(apOrder[i].studentStatus){
+					case 0:
+						break;
+					case 1:	
+						y++;
+						break;								
+    				}
+				}
+				if(y==i){
+					Swal.fire({
+						  title: '申請調課',
+						  text:'您本次訂單的所有預約課程都已上完囉',
+						  icon:'error',
+						})
+				}else{	
+					Swal.fire({
+					  title: '申請調課',
+					  text:'可在申請前先與教練討論適合的調課時間',
+					  icon:'question',
+					  showCancelButton: true,
+					  confirmButtonText: '確定',
+					  cancelButtonText: '取消',	  
+					}).then((result) => {
+					  if (result.value) {
+							$.ajax({
+								url:"<%=request.getContextPath()%>/appointment_order/appointmentOrder.do",
+								type:"POST",
+								data:{
+								'action':'transferDate',
+								'appointmentOrderNo':apNo,
+								},	
+									success:function(e){
+										console.log(e);
+										  Swal.fire({
+											  title: '調課申請已經送出',
+											  icon:'success'
+									}).then((result) => {
+										  if (result.value) {
+											  $('#tr'+apNo).fadeOut('fast');
+											  }
+										  })
+									}		
+							}) 
+					  }
+					  })}
+				}	
+			})
+
+}
+//finishAPDetail
+//finishAPdetail
+function finishAPDetail(apOrderDetailNo){
+	  Swal.fire({
+		  title:'完成預約',
+		  text:'若已完成當日預約課程，請按下確定',
+		  icon:'question',
+		  showCancelButton: true,
+		  confirmButtonText: '確定完成',
+		  cancelButtonText: '取消',	 
+	  }).then((result) => {
+		  if (result.value) {
+			  $.ajax({
+					url:"<%=request.getContextPath()%>/AppointmentOrderDetailServlet",
+					type:"POST",
+					data:{
+					'action':'finishAPDetail',
+					'appointmentOrderDetailNo':apOrderDetailNo,
+					},	
+						success:function(e){
+							console.log(e);
+							  Swal.fire({
+								  title: '已完成當日預約',
+								  icon:'success'
+						})
+			  
+			  }
+		  })
+}
+		  })
+	  }
+
+//date picker
+var memLessonDates = [];var memAppointmentDates = [];
+var picker1 =$('#datepicker').datepicker({ //leftbar
+	onSelect: function(dateStr,date,picker) {
+		picker.update('onRenderCell');
+	},
+	inline:true,
+	language: 'zh',
+    onRenderCell: function(d, type) {
+        var thisDate = d.getFullYear()+'-'+((d.getMonth()<10)?'0':'')+(d.getMonth()+1)+'-'+((d.getDate()<10)?'0':'')+d.getDate();
+           if (memLessonDates.indexOf(thisDate)>-1) {
+               return {
+               	disabled:true,
+               	classes: 'lesson'
+               	}
+               }else if(memAppointmentDates.indexOf(thisDate)>-1){
+                   return {
+                     	classes: 'appointment'
+                    }    
+           }
+     }
+}).data('datepicker');
+//初始化
+window.onload =function init(){
+	leConnect();
+	memappointmentDate();
+	memlessonDate();	
+	picker1.update('onRenderCell');
+	
+}
+
+var memlessonDate=function memLesson(){ //取得會員課程
+	$.ajax({
+		async : false,
+        cache : false,
+    	url:"<%=request.getContextPath()%>/lesson_order/lessonOrder.do",
+    	type:"POST",
+    	data:{
+    		'action':'get_mem_lesson_date_ajax',
+    		'memberNo':'${memberVO.member_no}'
+    		},success:function(ldlist){
+				console.log('memlessonDate'+ldlist);
+    				memLessonDates=ldlist;
+
+    			}
+	});
+}
+var memappointmentDate=function memAppointment(){ //取得會員預約
+$.ajax({
+async : false,	
+cache : false,
+url:"<%=request.getContextPath()%>/appointment_order/appointmentOrder.do",
+type:"POST",
+data:{
+	'action':'get_mem_appointment_date_ajax',
+	'memberNo':'${memberVO.member_no}'
+	},success:function(aplist){
+		console.log('mem_appointment:'+aplist);
+		memAppointmentDates=aplist;
+
+		}
+});
+}
+
+
+</script> 
+</html>

@@ -1,0 +1,141 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="java.util.*"%>
+<%@ page import="com.employee.model.*"%>
+<%@page import="java.util.Base64"%>
+<jsp:useBean id="empSvc" scope="session" class="com.employee.model.EmployeeService" />
+<%
+	EmployeeVO EmployeeVO =(EmployeeVO) session.getAttribute("EmployeeVO");
+	String base64Image = Base64.getEncoder().encodeToString(empSvc.getOneEmployee(EmployeeVO.getEmployee_no()).getEmployee_photo());
+	String empName = empSvc.getOneEmployee(EmployeeVO.getEmployee_no()).getEmployee_name();
+%>
+
+ <style>
+ 	img#employee{
+ 		width:100px;
+ 		height:100px;
+ 		border-radius:5px
+ 	}
+ </style>
+
+<style>
+		 body{
+		 background-image:url('<%=request.getContextPath()%>/back-end/gym_index/img/background/20190302_IMG_5416.JPG');
+         margin: 0 auto;
+  		 text-align: center;
+    	 width: 100%;
+         background-repeat:no-repeat;
+     	 background-size:cover;
+ 		 opacity: 0.9;
+		 font-weight:bolder;
+		 color:black;
+		}
+		
+</style>
+ <aside>
+      <div id="sidebar" class="nav-collapse ">
+        <!-- sidebar menu start-->
+        <ul class="sidebar-menu" id="nav-accordion">
+        <h5 class="centered"><%=empName%></h5>
+          <p class="centered"><a href="<%=request.getContextPath()%>/back-end/gym_index/index.jsp"><img src="data:image/jpeg;base64,<%=base64Image%>" id="employee"></a></p>
+                   
+          <li class="sub-menu">
+            <a href="<%= request.getContextPath()%>/back-end/gym_index/javascript:;">
+              <i class="fa fa-desktop"></i>
+              <span>會員管理</span>
+              </a>
+            <ul class="sub">
+            <%if((empSvc.findAuthority(EmployeeVO.getEmployee_no(), "F002"))!=null){%>
+             <li><a href="<%= request.getContextPath()%>/back-end/member-back/select_member.jsp">會員查詢/修改</a></li>
+            <%}%>
+            </ul>
+          </li>
+          <li class="sub-menu">
+            <a href="<%= request.getContextPath()%>/back-end/gym_index/javascript:;">
+              <i class="fa fa-cogs"></i>
+              <span>教練管理</span>
+              </a>
+            <ul class="sub">
+            <%if((empSvc.findAuthority(EmployeeVO.getEmployee_no(), "F003"))!=null){%>
+            	  <li><a href="<%= request.getContextPath()%>/back-end/coach-back/review_coach.jsp">教練審核</a></li>
+            	  <li><a href="<%= request.getContextPath()%>/back-end/coach-back/select_coach.jsp">查詢教練</a></li>
+            <%}%>
+            </ul>
+          </li>
+          <li class="sub-menu">
+            <a href="<%= request.getContextPath()%>/back-end/gym_index/javascript:;">
+              <i class="fa fa-book"></i>
+              <span>員工管理</span>
+              </a>
+            <ul class="sub">
+            <%if((empSvc.findAuthority(EmployeeVO.getEmployee_no(), "F004"))!=null){%>
+              <li><a href="<%=request.getContextPath()%>/back-end/employee/employee.jsp">員工列表</a></li>
+              <%}%>
+            </ul>
+          </li>
+          <li class="sub-menu">
+            <a href="<%= request.getContextPath()%>/back-end/gym_index/javascript:;">
+              <i class="fa fa-tasks"></i>
+              <span>商城管理</span>
+              </a>
+            <ul class="sub">
+            <%if((empSvc.findAuthority(EmployeeVO.getEmployee_no(), "F009"))!=null){%>
+              <li><a href="<%= request.getContextPath()%>/back-end/product/product_basic.jsp">商品管理</a></li>
+              <%}%>
+              <%if((empSvc.findAuthority(EmployeeVO.getEmployee_no(), "F008"))!=null){%>
+              <li><a href="<%= request.getContextPath()%>/back-end/product_Order/product_order_basic.jsp">訂單管理</a></li>
+              <%}%>
+              <%if((empSvc.findAuthority(EmployeeVO.getEmployee_no(), "F009"))!=null){%>
+              <li><a href="<%= request.getContextPath()%>/back-end/product/addProduct.jsp">新增商品</a></li>
+              <%}%>
+            </ul>
+          </li>
+          <li class="sub-menu">
+            <a href="javascript:;">
+              <i class="fa fa-th"></i>
+              <span>檢舉管理</span>
+              </a>
+            <ul class="sub">
+            <%if((empSvc.findAuthority(EmployeeVO.getEmployee_no(), "F005"))!=null){%>
+            	<li><a href="<%= request.getContextPath()%>/back-end/report-coach-back/report_coach.jsp">檢舉教練管理</a></li>	
+            <%}%>
+            <%if((empSvc.findAuthority(EmployeeVO.getEmployee_no(), "F007"))!=null){%>
+            	<li><a href="<%= request.getContextPath()%>/back-end/product_report/product_report_basic.jsp">檢舉商品管理</a></li>
+            <%}%>
+            <%if((empSvc.findAuthority(EmployeeVO.getEmployee_no(), "F006"))!=null){%>
+            	<li><a href="<%= request.getContextPath()%>/back-end/report_article/report_article.jsp">檢舉文章管理</a></li>
+            <%}%>
+            </ul>
+          </li>      
+          <li class="sub-menu">
+            <a href="<%= request.getContextPath()%>/back-end/gym_index/javascript:;">
+              <i class=" fa fa-bar-chart-o"></i>
+              <span>健身房管理</span>
+              </a>
+            <ul class="sub">
+            <%if((empSvc.findAuthority(EmployeeVO.getEmployee_no(), "F010"))!=null){%>
+               <li><a href="<%=request.getContextPath()%>/back-end/gym/gym.jsp">健身房列表</a></li>
+               <%}%>
+            </ul>
+          </li>
+          <li class="sub-menu">
+            <a href="<%= request.getContextPath()%>/back-end/gym_index/javascript:;">
+              <i class="fa fa-comments-o"></i>
+              <span>資訊管理</span>
+              </a>
+            <ul class="sub">
+            <%if((empSvc.findAuthority(EmployeeVO.getEmployee_no(), "F001"))!=null){%>
+              <li><a href="<%=request.getContextPath()%>/back-end/news/news.jsp">最新消息維護</a></li>
+            <%} %>
+            <%if((empSvc.findAuthority(EmployeeVO.getEmployee_no(), "F001"))!=null){%>
+              <li><a href="<%=request.getContextPath()%>/back-end/qa/Q&A.jsp">Q&A</a></li>
+            <%}%>             
+            <%if((empSvc.findAuthority(EmployeeVO.getEmployee_no(), "F001"))!=null){%>
+              <li><a href="<%= request.getContextPath()%>/back-end/system-news-back/review_news.jsp">系統訊息</a></li>
+            <%}%>
+            </ul>
+          </li>
+        </ul>
+        <!-- sidebar menu end-->
+      </div>
+    </aside>

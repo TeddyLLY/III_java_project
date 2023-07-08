@@ -1,0 +1,44 @@
+body {
+    background: linear-gradient(50deg, #90d2f5, rgba(161, 227, 226, 1));
+}
+
+
+a {
+    color:green;
+}
+
+.calendar{
+	width:450px;
+	height:350px;
+	background:#fff;
+	box-shadow:0px 1px 1px rgba(0,0,0,0.1);
+}
+.body-list ul{
+	width:100%;
+	font-family:arial;
+	font-weight:bold;
+	font-size:14px;
+}
+.body-list ul li{
+	width:14.28%;
+	height:190px;
+	line-height:36px;
+	list-style-type:none;
+	display:block;
+	box-sizing:border-box;
+	float:left;
+	text-align:center;
+}
+.lightgrey{
+	color:#a8a8a8; /*��蹓蕭�*/
+}
+.darkgrey{
+	color:#565656; /*����蕭�*/
+}
+.green{
+	color:pink; /*��摩�*/
+}
+.greenbox{
+	border:1px solid #6ac13c;
+	background:#e9f8df; /*����蕭�嚙踝蕭�謒�*/
+}
